@@ -64,6 +64,19 @@
     echo'<p> Funzione con parametri: '.somma($numero,).'</p></div>';
 ?>
 
+<?php //fix DATA
+    echo '<h1>Data temporale</h1>';
+    //todo DATE()
+    $date=date('H:m:s | D d-M m-Y',time());
+    echo'<p>Data corrente: '.$date.'</p>';
+    //todo ottenere il timestamp
+    $timeStamp=mktime(12,30,0,  8,3,2001);
+    echo'<p>Timestamp: '.$timeStamp.'</p>';
+    //todo calcoli con i giorni
+    $leggibilità=date('D d-M-Y', strtotime('now'.' -500 years'));
+    echo'<p>Data con operazione: '.$leggibilità.'</p>';
+
+?>
 
 <style>
     h1{border-bottom:1px solid white;}
