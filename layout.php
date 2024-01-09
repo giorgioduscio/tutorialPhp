@@ -19,7 +19,10 @@
             ?>            
         </section>
         <footer>
-            <p>Footer</p>
+            <article>
+                <h1>Footer</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur eius laboriosam illum dolorem labore, impedit esse at explicabo, ipsam earum ad quidem! Sapiente quas earum magni itaque dolorem dolorum rerum?</p>
+            </article>
         </footer>
     </body>
 </html>
@@ -29,7 +32,9 @@
     *{background:#50505050; color:white; margin:0; padding:1%;}
     html{background:#202020;}
     form{display: flex; flex-direction: column;}
-    h1{border-bottom:1px solid white;margin-top:10px;}
+    h1{border-bottom:1px solid white;}
+
+    article{border-left:5px solid white;margin-bottom:10px;}
 </style>
 
 <!-- <rel="stylesheet" href="stile.css">-->
