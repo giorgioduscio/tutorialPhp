@@ -1,5 +1,38 @@
-<a href="http://127.0.0.1/tutorial_php/index.php">INDEX</a>
-<?php //fix ARRAY
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+                <title>Tutorial php</title>
+    </head>
+    <body>
+        <h1>Form esempio</h1>
+        <?php $nome='orazio';?>
+        <p>
+            <a href="http://127.0.0.1/tutorial_php/esempio.php">index</a>
+        </p>
+        <form action="/" method="post">
+            <input id="nome" name="nome" type="text" placeholder="Nome"><br>
+            <input id="cognome" name="cognome"  type="text" placeholder="Cognome"><br>
+            <button type="submit">Invio</button>
+        </form>
+
+<!-- todo IF HTML -->
+        <?php if($nome=='Orazio'): ?>
+        <p>Prima condizione verificata</p>
+        <?php elseif($nome=='Mauro'): ?>
+        <p>Seconda condizione verificata</p>
+        <?php else: ?>
+        <p>Condizione predefinita</p>
+        <?php endif; ?>
+
+<!-- todo LOOP HTML -->
+        <ul>
+            <?php for ($i=0;$i<6;$i++):?>
+                <li><?php echo $i?>) List items </li>
+            <?php endfor;?>
+        </ul>
+
+ <?php //fix ARRAY
     echo'<h1>Array</h1><div>';
     //todo Città
     $citta=['milano','firenze','roma'];    
@@ -50,8 +83,8 @@
 <?php //fix FUNZIONI
     echo'<h1>Funzioni</h1><div>';
     //todo FUNZIONE CON NOME
-    function saluta(){ echo '<p>Funzione con nome: OUTPUT</p>';}
-    saluta();
+    function functionName(){ echo '<p>Funzione con nome: OUTPUT</p>';}
+    functionName();
     //todo FUNZIONE ANONIMA
     $prova=function(){echo'<p>Funzione anonima: OUTPUT</p>';};
     $prova();
@@ -77,8 +110,11 @@
     echo'<p>Data con operazione: '.$leggibilità.'</p>';
 
 ?>
-
+    </body>
+</html>
 <style>
+    html{background:#202020;}
+    form{display: flex; flex-direction: column;}
     h1{border-bottom:1px solid white;}
-    *{background:#00000050; color:white; padding:4px;}
-</style> 
+    *{background:#50505050; color:white; margin:0; padding:1%;}
+</style>
