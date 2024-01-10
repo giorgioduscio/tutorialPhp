@@ -5,15 +5,20 @@
                 <title>Tutorial php</title>
     </head>
     <body>
-        <article>
-            <h1>Form esempio</h1>        
-            <form action="/" method="post">
-                <input id="nome" name="nome" type="text" placeholder="Nome"><br>
-                <input id="cognome" name="cognome"  type="text" placeholder="Cognome"><br>
-                <button type="submit">Invio</button>
-            </form>            
-        </article>
+        <!-- todo FORM -->
+        <article> <h1>Form</h1>    
 
+            <form action="http://127.0.0.1/tutorial_php/TUTORIAL.php?" method="post">
+                <input id="email" name="email" type="text" placeholder="Email"><br>
+                <input id="password" name="password"  type="password" placeholder="Password"><br>
+                <button type="submit">Invio</button>
+            </form>
+            <?php 
+                $email=$_POST['email'];
+                $password=$_POST['password'];
+                echo '<p>Email: '.$email.'</p><p>Password: '.$password.'</p>';
+            ?>
+        </article>
 
         <!-- todo IF HTML -->
         <article><h1>Verifica condizione</h1> <?php $nome='orazio';?>
@@ -35,7 +40,7 @@
             </ul>            
         </article>
 
-        <!-- fix ARRAY -->
+        <!-- todo ARRAY -->
         <article> <h1>Array</h1>
             <?php 
                 //todo Città
@@ -85,7 +90,7 @@
                 ?>
         </article>
 
-        <!-- fix FUNZIONI -->
+        <!-- todo FUNZIONI -->
         <article><h1>Funzioni</h1>
             <?php 
                 //todo FUNZIONE CON NOME
@@ -104,7 +109,7 @@
             ?>
         </article>
 
-        <!-- fix DATA -->
+        <!-- todo DATA -->
         <article><h1>Data temporale</h1>
             <?php 
                 //todo DATE()
@@ -134,24 +139,23 @@
                 $matches=preg_match($pattern, $testo, $array);
                 echo '<p>Match occorrenze: '.$matches.' TROVATI</p>';
 
-                echo'<h2>QUANTIFICATORI</h2>';
+                echo'<h2>Quantificatori</h2>';
                 $pattern='/[\s,]+/';
                 $testo="My favorite colors are red, green and blue";
                 $parts=preg_split($pattern, $testo);
                 foreach($parts as $part){ echo '<p>'.$part.'</p>'; }
 
-                echo'<h2>ANCORE</h2>';
+                echo'<h2>Ancore</h2>';
                 $pattern='/[*M]+/';
                 $names=array('Marco rossi','Luca Verdi','Mattia Gialli');
                 $matches=preg_grep($pattern,$names);
                 foreach($matches as $match){ echo '<p>'.$match.'</p>'; }
 
-                echo'<h2>LIMITI</h2>';
+                echo'<h2>Limiti</h2>';
                 $pattern='/\bcar\w*/';
                 $text='<p>Words benining whith car: car, carrot, cartoon.</p><p>Word ending with car: scar, oscar, supercar</p>';
                 $replacement='<b>$0</b>';
                 echo preg_replace($pattern,$replacement,$text);
-                
             ?>
         </article>
     </body>
