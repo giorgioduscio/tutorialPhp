@@ -123,14 +123,35 @@
         <!-- todo Regex -->
         <article> <h1>Regex</h1>
             <?php 
+                // todo C'è occorrenza?
                 $testo='Oggi è una bellissima giornata';
-                $pattern="/Og[gk]i/";
-                if(!preg_match($pattern, $testo)){
-                    echo '<p>Mach trovato</p>';
-                }else{
-                    echo '<p>Mach non trovato</p>';
-                }
-            
+                $pattern="/[e]/";
+                if(preg_match($pattern, $testo)){
+                    echo '<p>Match binario: TROVATO</p>';
+                }else{ echo '<p>Match binario: NON TROVATO</p>'; }
+
+                // todo Quante occorrenze?
+                $matches=preg_match($pattern, $testo, $array);
+                echo '<p>Match occorrenze: '.$matches.' TROVATI</p>';
+
+                echo'<h2>QUANTIFICATORI</h2>';
+                $pattern='/[\s,]+/';
+                $testo="My favorite colors are red, green and blue";
+                $parts=preg_split($pattern, $testo);
+                foreach($parts as $part){ echo '<p>'.$part.'</p>'; }
+
+                echo'<h2>ANCORE</h2>';
+                $pattern='/[*M]+/';
+                $names=array('Marco rossi','Luca Verdi','Mattia Gialli');
+                $matches=preg_grep($pattern,$names);
+                foreach($matches as $match){ echo '<p>'.$match.'</p>'; }
+
+                echo'<h2>LIMITI</h2>';
+                $pattern='/\bcar\w*/';
+                $text='<p>Words benining whith car: car, carrot, cartoon.</p><p>Word ending with car: scar, oscar, supercar</p>';
+                $replacement='<b>$0</b>';
+                echo preg_replace($pattern,$replacement,$text);
+                
             ?>
         </article>
     </body>
@@ -139,6 +160,6 @@
     *{background:#50505050; color:white; margin:0; padding:1%;}
     html{background:#202020;}
     form{display: flex; flex-direction: column;}
-    h1{border-bottom:1px solid white;}
+    h1,h2{padding-top:20px;} h1{border-bottom:1px solid white;}
     article{border-left:5px solid white; margin-bottom:10px;}
 </style>
