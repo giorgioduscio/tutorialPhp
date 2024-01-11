@@ -158,11 +158,40 @@
                 echo preg_replace($pattern,$replacement,$text);
             ?>
         </article>
+
+        <!-- todo Leggere e scrivere File -->
+        <article><h1>Gestione file</h1>
+            <?php // Accertati di aver creato prima il file
+                $nomeFile='nomeNuovo.txt'; 
+                if (file_exists($nomeFile)) { 
+                    $file=fopen($nomeFile,'r');//Lettura
+                    $content=fread($file,filesize($nomeFile));
+
+                    $testo='Ciao. Sono una frase dinamica!';
+                    $file=fopen($nomeFile,'w');//Scrittura
+                    fwrite($file, $testo);
+
+                    $file=fopen($nomeFile,'a');//Append
+                    fwrite($file, $testo);
+
+
+                    echo '<p>Contenuto: '.$content.'</p>';
+                    fclose($file);
+
+                    // Rinomina 
+                    // rename($nomeFile,'nomeNuovo.txt');
+                    // Elimina 
+                    // unlink($nomeFile);
+                }else{ echo '<p>Il file non esiste</p>'; }
+            ?>
+        </article>
     </body>
 </html>
 <style>
     *{background:#50505050; color:white; margin:0; padding:1%;}
-    html{background:#202020;}
+    html{background:#202020; display: flex; flex-direction: column; align-items: center;}
+    body{max-width:800px;}
+
     form{display: flex; flex-direction: column;}
     h1,h2{padding-top:20px;} h1{border-bottom:1px solid white;}
     article{border-left:5px solid white; margin-bottom:10px;}
