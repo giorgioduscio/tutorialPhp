@@ -160,31 +160,72 @@
         </article>
 
         <!-- todo Leggere e scrivere File -->
-        <article><h1>Gestione file</h1>
-            <?php // Accertati di aver creato prima il file
-                $nomeFile='nomeNuovo.txt'; 
-                if (file_exists($nomeFile)) { 
-                    $file=fopen($nomeFile,'r');//Lettura
-                    $content=fread($file,filesize($nomeFile));
+        <article><h1>Gestione file</h1><?php // Accertati di aver creato prima il file
+            $nomeFile='nomeNuovo.txt'; 
+            if (file_exists($nomeFile)) { 
+                $file=fopen($nomeFile,'r');//Lettura
+                $content=fread($file,filesize($nomeFile));
 
-                    $testo='Ciao. Sono una frase dinamica!';
-                    $file=fopen($nomeFile,'w');//Scrittura
-                    fwrite($file, $testo);
+                $testo='Ciao. Sono una frase dinamica!';
+                $file=fopen($nomeFile,'w');//Scrittura
+                fwrite($file, $testo);
 
-                    $file=fopen($nomeFile,'a');//Append
-                    fwrite($file, $testo);
+                $file=fopen($nomeFile,'a');//Append
+                fwrite($file, $testo);
 
 
-                    echo '<p>Contenuto: '.$content.'</p>';
-                    fclose($file);
+                echo '<p>Contenuto: '.$content.'</p>';
+                fclose($file);
 
-                    // Rinomina 
-                    // rename($nomeFile,'nomeNuovo.txt');
-                    // Elimina 
-                    // unlink($nomeFile);
-                }else{ echo '<p>Il file non esiste</p>'; }
-            ?>
-        </article>
+                // Rinomina 
+                // rename($nomeFile,'nomeNuovo.txt');
+                // Elimina 
+                // unlink($nomeFile);
+            }else{ echo '<p>Il file non esiste</p>'; }
+        ?></article>
+
+        <!-- todo Gestione cartelle -->
+        <article><h1>Gestione cartelle</h1><?php
+          echo'<h2> Crea cartella e copia file al suo interno</h2>';
+            $nomeCartella='cartellaProva';
+            $nomeFile='fileProva.txt';
+            $nuovoFile= $nomeCartella.'/'.$nomeFile;
+
+            if (file_exists($nomeFile)) {
+                if(copy($nomeFile,$nuovoFile)){ 
+                    echo'<p>Operazione eseguita con successo</p>'; 
+                }else{ 
+                    echo '<p>Operazione non eseguita</p>'; 
+                }
+            }else{echo '<p>Elemento già esistente</p>';}
+
+            echo'<h2>Mostra file</h2>';
+            function mostraFile($path){
+                if (file_exists($path) && is_dir($path)) {//Il file esiste?
+                    $result=scandir($path);//Allora mostra ciò che c'è dentro
+                    
+                    $files=array_diff($result, array('.','..'));//crea file e togli elementi
+                    // print_r($result);
+                    // print_r($files);
+
+                    if(count($files)>0){
+                        foreach ($files as $file) {
+                            if (is_file("$path/$file")) {
+                                echo'<p>'."$path / $file".'</p>';
+                            }elseif (is_dir("$path/$file")) {
+                                mostraFile("$path/$file");
+                            }
+                        }
+                    }else{ echo'<p>ERRORE: Non sono stati trovati file in questa cartella</p>'; }
+                }else { echo'<p>ERRORE: La cartella non esiste</p>'; }
+            } mostraFile('cartellaProva');
+
+            echo'<h2>Il tipo di file nella cartella</h2>';
+            $files=glob("cartellaProva/*.txt");//prende tutti i txt dalla cartella
+            foreach($files as $file){
+                echo "<p>".basename($file)." (size: ".filesize($file)." bytes)</p>";
+            }
+        ?></article>
     </body>
 </html>
 <style>
