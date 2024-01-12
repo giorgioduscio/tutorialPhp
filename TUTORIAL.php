@@ -243,29 +243,28 @@
                         $tipoFile=$_FILES["photo"]["type"];
                         $dimenzioneFile=$_FILES["photo"]["size"];
 
-                        // Verifica estenzione file
+                       // Verifica estenzione file
                         $estenzione=pathinfo($nomeFile, PATHINFO_EXTENSION);
                         if (!array_key_exists($estenzione, $estenzioniPermesse)) {
                             die("<p>Errore 1: seleziona un formato valido</p>");
                         }else{echo"<p>Controllo estenzione superato</p>";}
 
-                        // Verifica grandezza 5mb
+                       // Verifica grandezza 5mb
                         $dimenzioneMassima=5*1024*1024;
                         if ($dimenzioneFile>$dimenzioneMassima) {
                             die("<p>Errore 2: La grandezza è superiore al limite</p>");
                         }else{echo"<p>Controllo dimenzione superato</p>";}
 
-                        // Verifica il tipo di file
-                        if(in_array($tipoFile, $estenzioniPermesse)){//se si trova tra i valori dell'array
+                       // Verifica il tipo di file
+                        if(in_array($tipoFile, $estenzioniPermesse)){//controlla se il file si trova tra i valori dell'array (è permesso)
                             // controllare se il file esiste già
                             if (file_exists("cartellaProva/$nomeFile")) {
                                 echo"<p>Errore 3: Il file $nomeFile esiste già</p>";
+                            }else{ /*fix Carica il file*/
+                                echo"<p>Controllo omonimie superato</p>";
+                                move_uploaded_file($_FILES["photo"]["tmp_name"],"cartellaProva/$nomeFile");
+                                echo"<p>Il tuo file è stato caricato con successo</p>";
                             }
-
-                        }else{ /*fix*/
-                            echo"<p>Controllo omonimie superato</p>";
-                            move_uploaded_file($_FILES["photo"]["tmp_name"],"cartellaProva/$nomeFile");
-                            echo"<p>Il tuo file è stato caricato con successo</p>";
                         }
 
                     }else{echo"<p>Errore di caricamento del file. Riprova.</p>";}
