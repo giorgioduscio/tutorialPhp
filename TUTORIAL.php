@@ -271,6 +271,18 @@
                 }else{echo"<p>Errore 4: ".$_FILES["photo"]["error"]."</p>";}
             ?>
         </article>
+
+        <!-- todo cookie -->
+        <article><h1>Gestione cookie</h1><?php 
+            setcookie("username", "Luca Rossi", time()+(60*60*24*30));
+            if(isset($_COOKIE["username"])){
+            echo"<p>".$_COOKIE["username"]."</p>";
+            }else {
+                echo"<p>Nessun cookie disponibile</p>";
+            }
+            // setcookie("username", "", time() - 3600);
+        ?></article>
+        
     </body>
 </html>
 <style>
