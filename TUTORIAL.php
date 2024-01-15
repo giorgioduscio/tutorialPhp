@@ -2,9 +2,16 @@
 <html lang="en">
     
     <head>
-                <title>Tutorial php</title>
+        <title>Tutorial php</title>
+        <?php // todo Cookie, Sessioni
+            setcookie("username", "Luca Rossi", time()+(60*60*24*30));
+            // setcookie("username", "", time() - 3600);
+            session_start();
+        ?>
     </head>
-    <body><?php setcookie("username", "Luca Rossi", time()+(60*60*24*30));?>
+    <body>
+        
+
         <!-- todo FORM -->
         <article> <h1>Form</h1>    
 
@@ -278,12 +285,17 @@
             if(isset($_COOKIE["username"])){
             echo"<p>".$_COOKIE["username"]."</p>";
             }else{ echo"<p>Nessun cookie disponibile</p>"; }
-            // setcookie("username", "", time() - 3600);
+            
         ?></article>
 
-        <!-- todo Sessioni -->
+        <!-- todo Sessioni inserire prima di ogni output o elemento HTML -->
         <article><h1>Gestione delle Sessioni</h1><?php
-            session_start();
+            
+            $_SESSION["userId"]="Valore sessione";
+            
+            // unset($_SESSION["userId"]);
+            echo "<p>".$_SESSION["userId"]."</p>";
+            // session_destroy();
         ?></article>
     </body>
 </html>
@@ -293,6 +305,6 @@
     body{max-width:800px;}
 
     form{display: flex; flex-direction: column;}
-    h1,h2{padding-top:20px;} h1{border-bottom:1px solid white;}
+    h2{padding-top:20px;} h1{border-bottom:1px solid white;}
     article{border-left:5px solid white; margin-bottom:10px;}
 </style>
