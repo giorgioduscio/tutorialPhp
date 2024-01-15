@@ -4,7 +4,7 @@
     <head>
                 <title>Tutorial php</title>
     </head>
-    <body>
+    <body><?php setcookie("username", "Luca Rossi", time()+(60*60*24*30));?>
         <!-- todo FORM -->
         <article> <h1>Form</h1>    
 
@@ -272,17 +272,19 @@
             ?>
         </article>
 
-        <!-- todo cookie -->
+        <!-- todo cookie inserire prima di ogni output o elemento HTML-->
         <article><h1>Gestione cookie</h1><?php 
-            setcookie("username", "Luca Rossi", time()+(60*60*24*30));
+            
             if(isset($_COOKIE["username"])){
             echo"<p>".$_COOKIE["username"]."</p>";
-            }else {
-                echo"<p>Nessun cookie disponibile</p>";
-            }
+            }else{ echo"<p>Nessun cookie disponibile</p>"; }
             // setcookie("username", "", time() - 3600);
         ?></article>
-        
+
+        <!-- todo Sessioni -->
+        <article><h1>Gestione delle Sessioni</h1><?php
+            session_start();
+        ?></article>
     </body>
 </html>
 <style>
