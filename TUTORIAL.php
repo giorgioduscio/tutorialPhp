@@ -2,9 +2,16 @@
 <html lang="en">
     
     <head>
-                <title>Tutorial php</title>
+        <title>Tutorial php</title>
+        <?php // todo Cookie, Sessioni
+            setcookie("username", "Luca Rossi", time()+(60*60*24*30));
+            // setcookie("username", "", time() - 3600);
+            session_start();
+        ?>
     </head>
     <body>
+        
+
         <!-- todo FORM -->
         <article> <h1>Form</h1>    
 
@@ -243,35 +250,53 @@
                         $tipoFile=$_FILES["photo"]["type"];
                         $dimenzioneFile=$_FILES["photo"]["size"];
 
-                        // Verifica estenzione file
+                       // Verifica estenzione file
                         $estenzione=pathinfo($nomeFile, PATHINFO_EXTENSION);
                         if (!array_key_exists($estenzione, $estenzioniPermesse)) {
                             die("<p>Errore 1: seleziona un formato valido</p>");
                         }else{echo"<p>Controllo estenzione superato</p>";}
 
-                        // Verifica grandezza 5mb
+                       // Verifica grandezza 5mb
                         $dimenzioneMassima=5*1024*1024;
                         if ($dimenzioneFile>$dimenzioneMassima) {
                             die("<p>Errore 2: La grandezza è superiore al limite</p>");
                         }else{echo"<p>Controllo dimenzione superato</p>";}
 
-                        // Verifica il tipo di file
-                        if(in_array($tipoFile, $estenzioniPermesse)){//se si trova tra i valori dell'array
+                       // Verifica il tipo di file
+                        if(in_array($tipoFile, $estenzioniPermesse)){//controlla se il file si trova tra i valori dell'array (è permesso)
                             // controllare se il file esiste già
                             if (file_exists("cartellaProva/$nomeFile")) {
                                 echo"<p>Errore 3: Il file $nomeFile esiste già</p>";
+                            }else{ /*fix Carica il file*/
+                                echo"<p>Controllo omonimie superato</p>";
+                                move_uploaded_file($_FILES["photo"]["tmp_name"],"cartellaProva/$nomeFile");
+                                echo"<p>Il tuo file è stato caricato con successo</p>";
                             }
-
-                        }else{ /*fix*/
-                            echo"<p>Controllo omonimie superato</p>";
-                            move_uploaded_file($_FILES["photo"]["tmp_name"],"cartellaProva/$nomeFile");
-                            echo"<p>Il tuo file è stato caricato con successo</p>";
                         }
 
                     }else{echo"<p>Errore di caricamento del file. Riprova.</p>";}
                 }else{echo"<p>Errore 4: ".$_FILES["photo"]["error"]."</p>";}
             ?>
         </article>
+
+        <!-- todo cookie inserire prima di ogni output o elemento HTML-->
+        <article><h1>Gestione cookie</h1><?php 
+            
+            if(isset($_COOKIE["username"])){
+            echo"<p>".$_COOKIE["username"]."</p>";
+            }else{ echo"<p>Nessun cookie disponibile</p>"; }
+            
+        ?></article>
+
+        <!-- todo Sessioni inserire prima di ogni output o elemento HTML -->
+        <article><h1>Gestione delle Sessioni</h1><?php
+            
+            $_SESSION["userId"]="Valore sessione";
+            
+            // unset($_SESSION["userId"]);
+            echo "<p>".$_SESSION["userId"]."</p>";
+            // session_destroy();
+        ?></article>
     </body>
 </html>
 <style>
@@ -280,6 +305,6 @@
     body{max-width:800px;}
 
     form{display: flex; flex-direction: column;}
-    h1,h2{padding-top:20px;} h1{border-bottom:1px solid white;}
+    h2{padding-top:20px;} h1{border-bottom:1px solid white;}
     article{border-left:5px solid white; margin-bottom:10px;}
 </style>
