@@ -297,6 +297,31 @@
             echo "<p>".$_SESSION["userId"]."</p>";
             // session_destroy();
         ?></article>
+
+        <!-- todo inviare email -->
+        <article><h1>Inviare email</h1><?php
+            $from="corsophp@gmail.com";
+            $to="qwerty@gmail.com";
+            $subject="email di prova";
+            $message="Mail dal corso";
+
+            if( mail($to,$subject,$message) ){
+                echo"<p>Email mandata con successo</p>";
+            }else{ echo"<p>Email non mandata</p>"; }
+
+            // fix mandare html
+            $headers="MIME-Version 1.0"."\r\n";
+            $headers.="Content-type: text/html; charset=iso-8859-1"."\r\n";
+            $headers.="from $from"."\r\n";
+
+            $message="<html><body>";
+            $message.="<h1>Titolo della mail</h1>";
+            $message.="</body></html>";
+
+            if( mail($to,$subject,$message,$headers) ){
+                echo"<p>Email mandata con successo</p>";
+            }else{ echo"<p>Email non mandata</p>"; }
+        ?></article>
     </body>
 </html>
 <style>
