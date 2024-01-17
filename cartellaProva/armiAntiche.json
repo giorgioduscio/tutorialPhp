@@ -1,0 +1,32 @@
+{
+    "armiAntiche":[
+        {
+            "id":"1",
+            "nome":"Spada lunga",
+            "categoria":"Arma a due mani",
+            "lunghezza":"150cm",
+            "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.laforgiadelgrifone.com%2Fnegozio%2Farticoli-medievali%2Fspade%2Fspade-da-combattimento%2Fspada-lunga-museo-nazionale-zurigo-funzionale-smussata-sk-b%2F&psig=AOvVaw3HHED2qXZFvzdnfC97mbo-&ust=1705483944295000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMiirfvM4YMDFQAAAAAdAAAAABAI"
+        },
+        {
+            "id":"2",
+            "nome":"Spada da lato",
+            "categoria":"Arma a una mano",
+            "lunghezza":"110cm",
+            "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Ffaitsdarmes.com%2Fit%2Fspada-da-lato%2F270-spada-da-lato-kvetun.html&psig=AOvVaw0iQgfSFGgGv0WU5krSr4W1&ust=1705484082311000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCt5rvN4YMDFQAAAAAdAAAAABAD"
+        },
+        {
+            "id":"3",
+            "nome":"Großes Messer",
+            "categoria":"Arma a due mani",
+            "lunghezza":"110cm",
+            "img":"https://m.media-amazon.com/images/I/71n6ljLbENL.jpg"
+        },
+        {
+            "id":"4",
+            "nome":"Falcione",
+            "categoria":"Arma a una mano",
+            "lunghezza":"100cm",
+            "img":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.facebook.com%2F1397136377145689%2F&psig=AOvVaw0WAHzp0GSvInJm8iPFcHQm&ust=1705484164858000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIC-tefN4YMDFQAAAAAdAAAAABAD"
+        }
+    ]
+}

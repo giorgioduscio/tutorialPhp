@@ -10,8 +10,7 @@
         ?>
     </head>
     <body>
-        
-
+<!-- fix -->
         <!-- todo FORM -->
         <article> <h1>Form</h1>    
 
@@ -322,8 +321,25 @@
                 echo"<p>Email mandata con successo</p>";
             }else{ echo"<p>Email non mandata</p>"; }
         ?></article>
+<!-- fix -->
+        <!-- todo lavorare con json -->
+        <article><h1>Lavorare con json</h1><?php
+        ?></article>
     </body>
 </html>
+
+<script> // fix lavorare con json
+    let formData=new formData();
+    formData.append('data','colori');// form a cui appendiamo dei dati
+
+    fetch('backEnd.php',{
+        method:'POST',
+        body:formData
+    })
+    .then(responce=> responce.json())
+    .then(data=> console.log(data));
+</script>
+
 <style>
     *{background:#50505050; color:white; margin:0; padding:1%;}
     html{background:#202020; display: flex; flex-direction: column; align-items: center;}
