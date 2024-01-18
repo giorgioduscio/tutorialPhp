@@ -337,7 +337,17 @@
             class fruit{
                 // proprietà
                 public $nameFruit, $colorFruit, $weightFruit;
+
                 // Costruttore
+                function __construct($nameFruit,$colorFruit,$weightFruit){
+                    $this->nameFruit=$nameFruit;
+                    $this->colorFruit=$colorFruit;
+                    $this->weightFruit=$weightFruit;
+                }
+                // Metodi
+                function presentationFruit(){
+                    echo"<p> This is a $this->colorFruit $this->nameFruit ($this->weightFruit cm)</p>";
+                }
 
                 // get e set
                 function set_name($n){ $this->nameFruit=$n; }
@@ -354,12 +364,12 @@
                     $this->set_color($n);
                 }
             }
-            $mango=new fruit();
+            $mango=new fruit(null,null,5);
             $mango->set_name('Mango');
             $mango->accediProtected('Yellow'); // Protected: la proprietà può essere modificata solo dalla classe o dalle figlie
+            $mango->presentationFruit();
 
-
-            var_dump($mango);
+            echo"<p>".var_dump($mango)."</p>";
 
 
         ?></article>
