@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+    <!-- http://127.0.0.1/tutorial_php/cartellaProva/TUTORIAL.php -->
     <head>
         <title>Tutorial php</title>
         <?php // todo Cookie, Sessioni
@@ -10,11 +10,7 @@
         ?>
     </head>
     <body>
-<<<<<<< HEAD
-<!-- fix -->
-=======
 
->>>>>>> 6510cb525efc6c6efec6b4f68eb310b97acd3126
         <!-- todo FORM -->
         <article> <h1>Form</h1>    
 
@@ -325,11 +321,6 @@
                 echo"<p>Email mandata con successo</p>";
             }else{ echo"<p>Email non mandata</p>"; }
         ?></article>
-<<<<<<< HEAD
-<!-- fix -->
-        <!-- todo lavorare con json -->
-        <article><h1>Lavorare con json</h1><?php
-=======
 
         <!-- todo lavorare con json -->
         <article><h1>Lavorare con json</h1><?php
@@ -339,22 +330,47 @@
             // echo"<pre>".var_export($array['armiAntiche'][0]['nome'],true)."</pre>";// mostra dati
 
             echo json_encode($array);
->>>>>>> 6510cb525efc6c6efec6b4f68eb310b97acd3126
+        ?></article>
+
+        <!-- todo programmazione ad oggetti -->
+        <article><h1>Programmazione ad oggetti</h1><?php
+            class fruit{
+                // proprietà
+                public $nameFruit, $colorFruit, $weightFruit;
+                // Costruttore
+
+                // get e set
+                function set_name($n){ $this->nameFruit=$n; }
+                function get_name(){ return $this->nameFruit; }
+
+                protected function set_color($n){ $this->colorFruit=$n; }
+                function get_color(){ return $this->colorFruit; }
+
+                private function set_weight($n){ $this->weightFruit=$n; }
+                function get_weight(){ return $this->weightFruit; }
+
+                // accedere a protected
+                function accediProtected($n){
+                    $this->set_color($n);
+                }
+            }
+            $mango=new fruit();
+            $mango->set_name('Mango');
+            $mango->accediProtected('Yellow'); // Protected: la proprietà può essere modificata solo dalla classe o dalle figlie
+
+
+            var_dump($mango);
+
+
         ?></article>
     </body>
 </html>
 
-<script> // fix lavorare con json
+<script> // lavorare con JSON
     let formData=new formData();
-<<<<<<< HEAD
     formData.append('data','colori');// form a cui appendiamo dei dati
 
     fetch('backEnd.php',{
-=======
-    formData.append('data','armiAntiche');// form a cui appendiamo dei dati
-
-    fetch('TUTORIAL.php',{
->>>>>>> 6510cb525efc6c6efec6b4f68eb310b97acd3126
         method:'POST',
         body:formData
     })
