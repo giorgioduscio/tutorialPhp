@@ -337,7 +337,6 @@
             class fruit{
                 // proprietà
                 public $nameFruit, $colorFruit, $weightFruit;
-
                 // Costruttore
                 function __construct($nameFruit,$colorFruit,$weightFruit){
                     $this->nameFruit=$nameFruit;
@@ -348,7 +347,6 @@
                 function presentationFruit(){
                     echo"<p> This is a $this->colorFruit $this->nameFruit ($this->weightFruit cm)</p>";
                 }
-
                 // get e set
                 function set_name($n){ $this->nameFruit=$n; }
                 function get_name(){ return $this->nameFruit; }
@@ -359,7 +357,7 @@
                 private function set_weight($n){ $this->weightFruit=$n; }
                 function get_weight(){ return $this->weightFruit; }
 
-                // accedere a protected
+                // accedere a protected (e similmente a private)
                 function accediProtected($n){
                     $this->set_color($n);
                 }
@@ -371,7 +369,46 @@
 
             echo"<p>".var_dump($mango)."</p>";
 
+        ?></article>
 
+        <!-- todo ereditarietà oggetti -->
+        <article><h1>Ereditarietà degli oggetti</h1><?php
+            class persona{
+                public $nomePersona, $cognomePersona;
+                public function __construct($nomePersona,$cognomePersona){
+                    $this->nomePersona=$nomePersona;
+                    $this->cognomePersona=$cognomePersona;
+                }
+                protected function salutaProtected(){
+                    echo"<p>PROTECTED: Ciao, sono $this->nomePersona $this->cognomePersona</p>";
+                }
+                private function salutaPrivate(){
+                    echo"<p>PRIVATE: Ciao, sono $this->nomePersona $this->cognomePersona</p>";
+                }
+                function accediPrivate(){ $this->salutaPrivate(); }
+            }
+            class insegnante extends persona{
+                public $materia;
+                public function __construct($nomePersona,$cognomePersona,$materia){
+                    $this->nomePersona=$nomePersona;
+                    $this->cognomePersona=$cognomePersona;
+                    $this->materia=$materia;
+                }
+                public function salutaInsegnante(){
+                    echo"<p>Buongiorno, sono $this->nomePersona $this->cognomePersona e insegno $this->materia</p>";
+                }
+                function accediProtected(){ $this->salutaProtected(); }
+            }
+            $insegnante1=new insegnante("Anna","Rossi","Italiano");
+            var_dump($insegnante1);
+            $insegnante1->salutaInsegnante();
+            $insegnante1->accediProtected();
+            $insegnante1->accediPrivate();
+        ?></article>
+
+        <!-- todo ereditarietà oggetti -->
+        <article><h1>Ereditarietà degli oggetti</h1><?php
+        
         ?></article>
     </body>
 </html>
