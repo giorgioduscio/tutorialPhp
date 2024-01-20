@@ -406,9 +406,42 @@
             $insegnante1->accediPrivate();
         ?></article>
 
-        <!-- todo ereditarietà oggetti -->
-        <article><h1>Ereditarietà degli oggetti</h1><?php
-        
+        <!-- todo Classi astratte -->
+        <article><h1>Classi astratte</h1><?php
+            abstract class personaAstratta{
+                public $nomePersona, $cognomePersona;
+                public function __construct($nomePersona,$cognomePersona){
+                    $this->nomePersona=$nomePersona;
+                    $this->cognomePersona=$cognomePersona;
+                }
+                abstract function saluta($nomePersona,$cognomePersona);// Dichiaro solamente che esiste questo metodo
+            }
+            class insegnanteAstratto extends personaAstratta{
+                public $materia;
+                public function __construct($nomePersona,$cognomePersona,$materia){
+                    $this->nomePersona=$nomePersona;
+                    $this->cognomePersona=$cognomePersona;
+                    $this->materia=$materia;
+                }
+                function saluta($nomePersona,$cognomePersona,$materia=null){
+                    echo"<p>Buongiorno, sono $nomePersona $cognomePersona e insegno $materia</p>";
+                }
+            }
+            $insegnante1=new insegnanteAstratto("Barbara","Gialli","Matematica");
+            $insegnante1->saluta($insegnante1->nomePersona,$insegnante1->cognomePersona,$insegnante1->materia);
+        ?></article>
+
+        <!-- todo interfacce -->
+        <article><h1>Interfacce</h1><?php
+/*
+entità -> persona -> insegnante extends persona implements entità
+entità -> telefono -> iphone extends telefono implements entità
+*/
+            interface entità{ public function cade_a_terra(); }
+            abstract class telefono{ }
+            class iphone extends telefono implements entità{
+                public function cade_a_terra(){ echo"<p>BOOM!</p>"; }
+            }
         ?></article>
     </body>
 </html>
