@@ -433,15 +433,39 @@
 
         <!-- todo interfacce -->
         <article><h1>Interfacce</h1><?php
-/*
-entità -> persona -> insegnante extends persona implements entità
-entità -> telefono -> iphone extends telefono implements entità
-*/
+            /* interface ENTITA 
+            -> abstract class PERSONA -> INSENANTE extends persona implements entità
+            -> abstract class TELEFONO -> IPHONE extends telefono implements entità
+            */
             interface entità{ public function cade_a_terra(); }
             abstract class telefono{ }
             class iphone extends telefono implements entità{
                 public function cade_a_terra(){ echo"<p>BOOM!</p>"; }
             }
+        ?></article>
+
+        <!-- todo Proprietà e metodi statici -->
+        <article><h1>Proprietà e metodi statici</h1><?php
+            class personaMetodoStatico{
+                static $conteggio=0;// Legato alla classe, non all'istanza (this è inutilizzabile)
+                public $nome,$cognome;
+
+                function __construct($nome,$cognome){
+                    $this->nome=$nome;
+                    $this->cognome=$cognome;
+                    personaMetodoStatico::$conteggio++;// aumenta ogni volta che crei una istanza
+                }
+                static function totaleNascite(){
+                    echo"<p>Totale Nascite: ". personaMetodoStatico::$conteggio."</p>";
+                }
+            }
+            echo"<p>".personaMetodoStatico::$conteggio."</p>";
+            $persona1=new personaMetodoStatico("Luca","Rossi");
+            echo"<p>".personaMetodoStatico::$conteggio."</p>";
+            $persona2=new personaMetodoStatico("Marco","Versi");
+            echo"<p>".personaMetodoStatico::$conteggio."</p>";
+
+            $persona2->totaleNascite();
         ?></article>
     </body>
 </html>
