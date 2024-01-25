@@ -1,9 +1,10 @@
-<?php require('funzioni.php');?>
-
+<?php require('pagine.php');?>
+    
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Layout</title>
+        <link href="stile.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <header>
@@ -26,15 +27,4 @@
         </footer>
     </body>
 </html>
-
-
-<style>
-    *{background:#50505050; color:white; margin:0; padding:1%;}
-    html{background:#202020;}
-    form{display: flex; flex-direction: column;}
-    h1{border-bottom:1px solid white;}
-
-    article{border-left:5px solid white;margin-bottom:10px;}
-</style>
-
-<!-- <rel="stylesheet" href="stile.css">-->
+<script type="text/javascript" src="script.js"></script>

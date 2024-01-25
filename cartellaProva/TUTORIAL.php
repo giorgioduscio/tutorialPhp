@@ -467,6 +467,11 @@
 
             $persona2->totaleNascite();
         ?></article>
+
+        <article><?php 
+            $stringa='Tua madre';
+            printf("<p>Io sono %s</p>",$stringa);
+        ?></article>
     </body>
 </html>
 

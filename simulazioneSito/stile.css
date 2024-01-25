@@ -1,0 +1,6 @@
+*{background:#50505050; color:white; margin:0; padding:1%;}
+html{background:#202020;}
+form{display: flex; flex-direction: column;}
+h1{border-bottom:1px solid white;}
+
+article{border-left:5px solid white;margin-bottom:10px;}
